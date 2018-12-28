@@ -21,7 +21,7 @@ $(document).ready( function() {
                 var actorGifs = $("<img>")
                     .attr({"src":result.images.downsized_still.url, "data-still":result.images.downsized_still.url, "data-animate":result.images.downsized.url, "data-state":"still"});
                 actorGifs.addClass("gif")
-                $("#actor-gifs").append(actorGifs);
+                $("#actor-gifs").prepend(actorGifs);
             }
         });
 
@@ -38,30 +38,30 @@ $(document).ready( function() {
     }
 
     function renderButtons() {
-        $("#actor-view").empty();
+        $("#actor-buttons").empty();
 
         for (var i=0; i < actors.length; i++) {
             var a = $("<button>");
             a.attr("data-name", actors[i]);
             a.addClass("actor");
             a.text(actors[i]);
-            $("#actor-view").append(a);
+            $("#actor-buttons").append(a);
         }
     }
-
-    $(".gif").on("click", function(){
-
-        console.log("this works");
-        //     var state = $(this).attr("data-state");
-        //     if (state ==="still") {
-        //         $(this).attr("src", "data-animate");
-        //         $(this).attr("data-state", "animated")
-        //     } else if (state ==="animated") {
-        //         $(this).attr("src", "data-still");
-        //         $(this).attr("data-state", "still");
-        //     }
-        });
+    function moveImage(){
+            
+            var state = $(this).attr("data-state");
+            if (state ==="still") {
+                $(this).attr("src", "data-animate");
+                $(this).attr("data-state", "animated")
+            } else if (state ==="animated") {
+                $(this).attr("src", "data-still");
+                $(this).attr("data-state", "still");
+            }
+            console.log("this works");
+        };
     
+    $(".gif").on("click", moveImage);
     
 
     $("#add-actor").on("click", addActor);
