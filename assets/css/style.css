@@ -1,7 +1,21 @@
+body {
+    background-color: aliceblue;
+}
+
 button {
     margin: 10px;
 }
 
 button:hover {
     font-size: 125%;
+}
+
+.gif {
+    margin: auto;
+    display: flex;
+    
+}
+
+.rating {
+    text-align: center;
 }

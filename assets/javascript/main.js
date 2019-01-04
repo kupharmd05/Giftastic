@@ -18,10 +18,21 @@ $(document).ready( function() {
             var results = response.data;
             for(let result of results) {
                 console.log(result);
+                var info = $("<div>");
                 var actorGifs = $("<img>")
-                    .attr({"src":result.images.downsized.url, "data-still":result.images.downsized_still.url, "data-animate":result.images.downsized.url, "data-state":"still"});
-                actorGifs.addClass("gif")
-                $("#actor-gifs").prepend(actorGifs);
+                    .attr({"src":result.images.downsized_still.url, "data-still":result.images.downsized_still.url, "data-animate":result.images.downsized.url, "data-state":"still"});
+                actorGifs.addClass("gif rating")
+                console.log(result.rating);
+                
+
+
+                var actorRating = $("<p>").text("Rating: " + result.rating);
+                actorRating.addClass("rating");
+
+                info.append(actorGifs, actorRating);
+                
+                $("#actor-gifs").prepend(info);
+
                 $(".gif").on("click", moveImage);
             }
         });
