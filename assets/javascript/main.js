@@ -34,7 +34,7 @@ $(document).ready( function() {
                 
                 $("#actor-gifs").prepend(info);
 
-                // $(".gif").on("click", moveImage);
+                $(".gif").on("click", moveImage);
             }
         });
 
@@ -63,7 +63,7 @@ $(document).ready( function() {
         }
     }
 
-    $(".gif").on("click", function moveImage() {
+    function moveImage() {
             
             var state = $(this).attr("data-state");
             if (state ==="still") {
@@ -74,7 +74,7 @@ $(document).ready( function() {
                 $(this).attr("data-state", "still");
             }
             console.log("this works");
-        });
+        };
     
     $("#add-actor").on("click", addActor);
 
