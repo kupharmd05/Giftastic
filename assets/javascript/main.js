@@ -20,8 +20,9 @@ $(document).ready( function() {
                 console.log(result);
                 var info = $("<div>");
                 var actorGifs = $("<img>")
-                    .attr({"src":result.images.downsized_still.url, "data-still":result.images.downsized_still.url, "data-animate":result.images.downsized.url, "data-state":"still"});
-                actorGifs.addClass("gif rating")
+                    .attr({"src":result.images.downsized.url, "data-still":result.images.downsized_still.url, "data-animate":result.images.downsized.url, "data-state":"still"});
+                actorGifs.addClass("gif")
+                actorGifs.addClass("rating")
                 console.log(result.rating);
                 
 
@@ -33,7 +34,7 @@ $(document).ready( function() {
                 
                 $("#actor-gifs").prepend(info);
 
-                $(".gif").on("click", moveImage);
+                // $(".gif").on("click", moveImage);
             }
         });
 
@@ -56,12 +57,13 @@ $(document).ready( function() {
             for (let actor of actors) {
             var a = $("<button>");
             a.attr("data-name", actor);
-            a.addClass("actor");
+            a.addClass("actor btn");
             a.text(actor);
             $("#actor-buttons").append(a);
         }
     }
-    function moveImage(){
+
+    $(".gif").on("click", function moveImage() {
             
             var state = $(this).attr("data-state");
             if (state ==="still") {
@@ -72,9 +74,11 @@ $(document).ready( function() {
                 $(this).attr("data-state", "still");
             }
             console.log("this works");
-        };
+        });
     
     $("#add-actor").on("click", addActor);
+
+    // $(".gif").on("click", moveImage);
 
     renderButtons();
 

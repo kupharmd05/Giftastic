@@ -6,6 +6,10 @@ button {
     margin: 10px;
 }
 
+.btn {
+    border-color: black;
+}
+
 button:hover {
     font-size: 125%;
 }
