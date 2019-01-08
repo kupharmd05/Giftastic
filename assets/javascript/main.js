@@ -20,7 +20,7 @@ $(document).ready( function() {
                 console.log(result);
                 var info = $("<div>");
                 var actorGifs = $("<img>")
-                    .attr({"src":result.images.downsized.url, "data-still":result.images.downsized_still.url, "data-animate":result.images.downsized.url, "data-state":"still"});
+                    .attr({"src":result.images.downsized_still.url, "data-still":result.images.downsized_still.url, "data-animate":result.images.downsized.url, "data-state":"still"});
                 actorGifs.addClass("gif")
                 actorGifs.addClass("rating")
                 console.log(result.rating);
@@ -34,7 +34,7 @@ $(document).ready( function() {
                 
                 $("#actor-gifs").prepend(info);
 
-                $(".gif").on("click", moveImage);
+                // $(".gif").on("click", moveImage);
             }
         });
 
@@ -78,7 +78,7 @@ $(document).ready( function() {
     
     $("#add-actor").on("click", addActor);
 
-    // $(".gif").on("click", moveImage);
+    $(document).on("click", ".gif", moveImage);
 
     renderButtons();
 
